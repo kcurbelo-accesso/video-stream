@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { useMovieCollectionData } from '../../context/MovieCollectionContext';
-import { TileModal } from '../composite/TileModal';
-import { Collection } from '../ui/Collection';
-import { Loading } from '../ui/Loader';
+import { useMovieCollectionData } from '../../../context/MovieCollectionContext';
+import { TileModal } from '../../composite';
+import { Loading } from '../../ui';
+import { Collection } from '../../ui/Collection';
 
 export const HomeScreen = () => {
   const state = useMovieCollectionData();
