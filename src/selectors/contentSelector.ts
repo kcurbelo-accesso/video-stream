@@ -1,4 +1,4 @@
-import type { NormalizedData } from '../utils/help.utils';
+import type { NormalizedData } from '../utils/api.utils';
 
 /**
  * Get content items inside shelf

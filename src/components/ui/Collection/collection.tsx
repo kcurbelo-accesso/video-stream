@@ -1,6 +1,6 @@
 import { useMovieCollectionData } from '../../../context/MovieCollectionContext';
 import { selectShelfbyId } from '../../../selectors/contentSelector';
-import { isValidArray } from '../../../utils/array';
+import { isValidArray } from '../../../utils/array.utils';
 import { LazyRow } from '../../composite/LazyRow/lazy-row';
 import { Row } from '../Row';
 import './collection.scss';

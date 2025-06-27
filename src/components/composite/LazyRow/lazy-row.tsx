@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useMovieCollectionData, useSetMovieCollectionData } from '../../../context/MovieCollectionContext';
 import { API } from '../../../services/api';
 import type { RefIdJsonResponse } from '../../../types/api/refIdJson';
-import { isValidArray } from '../../../utils/array';
-import { normalizeSetJson } from '../../../utils/help.utils';
+import { normalizeSetJson } from '../../../utils/api.utils';
+import { isValidArray } from '../../../utils/array.utils';
 import { Row } from '../../ui';
 
 type LazyRowProps = {

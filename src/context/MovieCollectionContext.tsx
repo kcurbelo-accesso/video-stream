@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
-import { normalizeHomeJson, type NormalizedData } from '../utils/help.utils';
+import { normalizeHomeJson, type NormalizedData } from '../utils/api.utils';
 
 type MovieCollectionContextType = {
   shelves: NormalizedData['shelves'];
