@@ -58,6 +58,7 @@ export type ShelfContainerSet = {
   meta: Dictionary;
   setId?: string;
   refId?: string;
+  experimentToken?: string;
   text: ShelfContainerSetText;
   type: string;
 };

@@ -1,48 +1,58 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { normalizeHomeJson, type NormalizedData } from '../utils/help.utils';
 
 type MovieCollectionContextType = {
   shelves: NormalizedData['shelves'];
-  shelfOrder: string[];
+  shelfOrder: NormalizedData['shelfOrder'];
   content: NormalizedData['content'];
   loading: boolean;
+  setState?: Function;
 };
 
 export const MovieCollectionContext = createContext<MovieCollectionContextType | null>(null);
 
-export const useMovieCollectionData = () => {
-  const context = useContext(MovieCollectionContext);
-  if (!context) throw new Error('useMovieCollectionData must be used within a HomeDataProvider');
-  return context;
-};
+export const MovieCollectionProvider = ({ children }: { children: ReactNode }) => {
+  const [state, setState] = useState<MovieCollectionContextType>({
+    shelves: {},
+    shelfOrder: [],
+    content: {},
+    loading: true,
+  });
 
-export const MovieCollectionProvider = ({ children }: any) => {
-  const [shelves, setShelves] = useState<any>({});
-  const [shelfOrder, setShelfOrder] = useState<string[]>([]);
-  const [content, setContent] = useState<NormalizedData['content']>({});
-  const [loading, setLoading] = useState(true);
+  // Prevent double fetch in React Strict Mode during dev
   const hasRun = useRef(false);
 
   useEffect(() => {
-    async function fetchData() {
-      const url = 'https://cd-static.bamgrid.com/dp-117731241344/home.json';
-      const res = await fetch(url);
-      const { data } = await res.json();
-      console.log('data', data);
-      console.log('normalizeHomeJson', normalizeHomeJson(data));
-      const { shelves, shelfOrder, content } = normalizeHomeJson(data);
+    const fetchInitialData = async () => {
+      try {
+        const homeRes = await fetch('https://cd-static.bamgrid.com/dp-117731241344/home.json');
+        const { data } = await homeRes.json();
 
-      setShelves(shelves);
-      setContent(content);
-      setShelfOrder(shelfOrder);
-      setLoading(false);
-    }
+        const normalized = normalizeHomeJson(data);
+        setState((prev) => ({ ...prev, ...normalized, loading: false }));
+      } catch (error) {
+        console.error('Failed to load home data:', error);
+        setState((prev) => ({ ...prev, loading: false }));
+      }
+    };
 
     if (!hasRun.current) {
-      fetchData();
+      fetchInitialData();
       hasRun.current = true;
     }
   }, []);
 
-  return <MovieCollectionContext.Provider value={{ shelves, shelfOrder, content, loading }}>{children}</MovieCollectionContext.Provider>;
+  return <MovieCollectionContext.Provider value={{ ...state, setState }}>{children}</MovieCollectionContext.Provider>;
+};
+
+export const useMovieCollectionData = () => {
+  const context = useContext(MovieCollectionContext);
+  if (!context) throw new Error('useMovieCollectionData must be used within MovieCollectionProvider');
+  return context;
+};
+
+export const useSetMovieCollectionData = () => {
+  const context = useContext(MovieCollectionContext);
+  if (!context) throw new Error('useSetMovieCollectionData must be used within MovieCollectionProvider');
+  return context!.setState;
 };
