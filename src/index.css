@@ -1,16 +1,41 @@
+@font-face {
+  font-family: 'DisneySansUI';
+  src: url('/fonts/NewWaltDisneyUi-8YdA.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DisneySans';
+  src: url('/fonts/NewWaltDisneyFontRegular-BPen.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:  'DisneySansUI', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  cursor: none;
+  pointer-events: none;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  /* background: linear-gradient(to bottom, #01147C, #00BFFF);  */
+  background: linear-gradient(
+  /* 45deg, */
+  to bottom,
+  #127B5A 0%,     
+  #258792 50%,    
+  #3CE6BC 100%    
+);
 }
 
 a {

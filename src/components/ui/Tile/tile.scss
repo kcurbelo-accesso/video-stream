@@ -1,17 +1,34 @@
 /* Tile.css */
 .tile {
     width: 200px;
-    aspect-ratio: 1.78;
+    min-height: 112px;
+    // aspect-ratio: 1.78;
+    aspect-ratio: auto;
     margin: 0 8px;
-    padding: 4px 8px;
+    padding: 6px 6px 0;
+
     transition: transform 0.2s ease;
+    transform-origin: center center;
 
     &__img {
-        width: 200px;
+        width: 100%;
+        border-radius: 10px;
     }
+
+
 }
 
 .tile.focused {
-    // transform: scale(1.1);
-    outline: 2px solid #61dafb;
+    z-index: 1;
+    transform: scale(1.3);
+    outline: 2px solid #76d0c0;
+    border-radius: 10px;
+    // background: linear-gradient(to top, #76d0c0, transparent);
+    // background: linear-gradient(to bottom, #61dafb, transparent);
+    background: linear-gradient(45deg,
+            #76d0c0 0%,
+            #a18cd1 30%,
+            #fcbad3 60%,
+            transparent 100%);
+    ;
 }
