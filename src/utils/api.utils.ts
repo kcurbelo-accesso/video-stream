@@ -83,7 +83,6 @@ export const normalizeHomeJson = (data: HomeJsonResponse): NormalizedData => {
  * @param item
  * @returns
  */
-// const getContentTitle = (item: ContentItem): string => item.text?.title?.full?.series?.default?.content || 'Untitled Item';
 const getContentTitle = (item: ContentItem, contentType: string): string => {
   const resource = item.text?.title?.full;
   return (resource as any)?.[contentType]?.default?.content ?? '';
@@ -94,7 +93,6 @@ const getContentTitle = (item: ContentItem, contentType: string): string => {
  * @param item
  * @returns string
  */
-// const getContentImgSrc = (item: ContentItem): string => item.image?.tile?.['1.78']?.series?.default?.url || '';
 const getContentImgSrc = (item: ContentItem, prop: string): string => {
   const tileImg = getTileImgByAspectRatio(item, '1.78')?.[prop];
   return tileImg?.default?.url ?? '';
