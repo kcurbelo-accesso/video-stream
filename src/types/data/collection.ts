@@ -57,6 +57,7 @@ export type ShelfContainerSet = {
   items?: Array<ContentItem | ContentCollection>;
   meta: Dictionary;
   setId?: string;
+  refId?: string;
   text: ShelfContainerSetText;
   type: string;
 };

@@ -1,8 +1,35 @@
 .row {
-    margin-bottom: 40px;
+    position: relative;
+
+    &__header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: x-large;
+        color: white;
+    }
 }
 
 .tile-container {
     display: flex;
     overflow-x: auto;
+    gap: 8px;
+    padding: 14px 0;
+
+}
+
+.tile-wrapper {
+    padding: 8px 4px;
+    flex: 0 0 auto;
+    overflow-x: 'auto';
+    scroll-behavior: 'smooth';
+
+    &:first-child {
+        margin-left: 24px;
+    }
 }
