@@ -17,6 +17,7 @@ export type NormalizedData = {
     title: string;
     imageUrl?: string;
     type: string;
+    [key: string]: any;
   }>;
 };
 
@@ -112,13 +113,14 @@ const getTileImgByAspectRatio = (item: ContentItem, aspectRatio: string) => item
  * @param item
  * @returns
  */
-const normalizeContentCollection = (item: ContentCollection) => {
-  const { collectionId = '' } = item;
+const normalizeContentCollection = (collection: ContentCollection) => {
+  const { collectionId = '' } = collection;
   // const title = getContentTitle(item as any, 'collection');
   return {
+    ...collection, // probably don't need all the details
     id: collectionId,
-    title: getContentTitle(item as any, 'collection'),
-    imageUrl: getContentImgSrc(item as any, 'default'),
+    title: getContentTitle(collection as any, 'collection'),
+    imageUrl: getContentImgSrc(collection as any, 'default'),
   };
 };
 
@@ -126,8 +128,8 @@ export const normalizeContentItem = (item: ContentItem) => {
   const { contentId = '' } = item;
   // TODO: Optimize this logic
   const title = getContentTitle(item as ContentItem, 'series') || getContentTitle(item as ContentItem, 'program');
-
   return {
+    ...item, // probably don't need all the details
     id: contentId,
     title: title || 'Unknown',
     imageUrl: getContentImgSrc(item as ContentItem, 'series') || getContentImgSrc(item as ContentItem, 'program'),

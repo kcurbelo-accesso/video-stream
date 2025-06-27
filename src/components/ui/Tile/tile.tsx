@@ -17,6 +17,10 @@ export const Tile: React.FC<TileProps> = ({ contentId, isFocused }) => {
   );
 };
 
+/**
+ * This was an attempt to move the navigation into a context layer
+ * and use a wrapper component
+ */
 // export const FocusableTile = ({ contentId, id }: FocusTileProps) => {
 //   const ref = useRef<HTMLDivElement>(null);
 //   const { setFocusedId } = useFocusContext();
