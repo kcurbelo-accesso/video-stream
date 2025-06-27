@@ -177,9 +177,8 @@ src/
 
 ## 🧪 Notes for Reviewer
 
-- The UI is fully navigable without a mouse.
+- The UI is navigable without a mouse.
 - Shelves are normalized and stored using `refId` and `setId`.
 - Lazy rows only fetch their data when scrolled/navigated into view.
 - Modals support full-screen background video playback and dynamically load content.
-
-- ***
+- Without full context of set id and ref id, there is an adhoc solution for "Because You watched Gordan Ramsey shelf"

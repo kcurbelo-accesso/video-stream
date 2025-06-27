@@ -50,7 +50,6 @@ export const LazyRow: React.FC<LazyRowProps> = ({ refId, title, focusedIndex }) 
                 shelves: {
                   ...prev.shelves,
                   //@ts-ignore
-                  // [normalized.shelf.id]:{ ...normalized.shelf, ...shelf},
                   [normalized.shelf.id]: normalized.shelf,
                 },
                 shelfOrder: prev.shelfOrder.includes(normalized.shelf.id) ? prev.shelfOrder : [...prev.shelfOrder, normalized.shelf.id],
