@@ -49,7 +49,6 @@ export const TileModal = ({ contentId, onClose }: { contentId: string; onClose: 
           <h2>{title}</h2>
           <p>More info about this title...</p>
           <p>{tvRating}</p>
-          <button onClick={onClose}>Close</button>
         </div>
       </div>
     </Modal>
