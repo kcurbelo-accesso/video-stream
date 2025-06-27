@@ -37,10 +37,12 @@ export const LazyRow: React.FC<LazyRowProps> = ({ refId, title, focusedIndex }) 
 
               const normalized = normalizeSetJson(set);
 
-              if (normalized?.shelf.id !== refId) {
-                // I don't understand why the content id and ref id would be different.
-                // This is hack to get things to work.
-                normalized!.shelf.id = refId;
+              /**
+               * I don't fully understand why the content id and ref id would be different.
+               * TODO: Fix hack solution which prevents endless loop and memory leak;
+               */
+              if (normalized?.shelf.refId !== refId) {
+                normalized.shelf = { ...shelf, ...normalized.shelf, refId, id: refId, title: shelf?.title } as any;
               }
 
               setState?.((prev: any) => ({
@@ -48,6 +50,7 @@ export const LazyRow: React.FC<LazyRowProps> = ({ refId, title, focusedIndex }) 
                 shelves: {
                   ...prev.shelves,
                   //@ts-ignore
+                  // [normalized.shelf.id]:{ ...normalized.shelf, ...shelf},
                   [normalized.shelf.id]: normalized.shelf,
                 },
                 shelfOrder: prev.shelfOrder.includes(normalized.shelf.id) ? prev.shelfOrder : [...prev.shelfOrder, normalized.shelf.id],
