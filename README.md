@@ -18,7 +18,8 @@ This is a Roku-style streaming platform UI built as part of a take-home project.
 
 ### Requirements
 
-- Node.js v18 or higher
+- Node.js v18 or v20 (LTS recommended)
+  > ⚠️ Node 21+ is not supported due to incompatibilities with Vite and PostCss
 - npm v9 or higher (or `pnpm`/`yarn` if preferred)
 
 ### Installation

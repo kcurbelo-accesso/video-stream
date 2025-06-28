@@ -1,5 +1,4 @@
-// src/App.tsx
-import HomeScreen from './components/pages/home';
+import HomeScreen from './components/pages/Home';
 // import { FocusProvider } from './context/FocusContext';
 import { MovieCollectionProvider } from './context/MovieCollectionContext';
 
