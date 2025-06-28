@@ -31,9 +31,9 @@ export class ApiService {
    * @param options
    * @returns
    */
-  public async post<T = any>(url: string | URL, options: RequestInit = {}): Promise<T> {
-    return new Promise(true as any);
-  }
+  // public async post<T = any>(url: string | URL, options: RequestInit = {}): Promise<T> {
+  //   return new Promise(true as any);
+  // }
 }
 
 const apiService = new ApiService(); // Creating singleton
