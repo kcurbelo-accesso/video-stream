@@ -10,7 +10,7 @@ export const Tile: React.FC<TileProps> = ({ contentId, isFocused }) => {
   const content = selectContentById(state, contentId);
 
   return (
-    <div key={contentId + crypto.randomUUID()} className={`tile ${isFocused ? 'focused' : ''}`}>
+    <div className={`tile ${isFocused ? 'focused' : ''}`}>
       <img className="tile__img" src={content.imageUrl} alt={content.title} />
       {/* <h4>{content.title}</h4> */}
     </div>

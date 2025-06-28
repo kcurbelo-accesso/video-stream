@@ -55,7 +55,7 @@ export const HomeScreen = () => {
     <>
       <div>
         {state.shelfOrder.map((shelfId: string, i) => (
-          <div key={state.shelves[shelfId].id}>
+          <div key={i}>
             <Collection id={state.shelves[shelfId].id} focusedIndex={i === focusedRow ? focusedTile : -1} />
           </div>
         ))}

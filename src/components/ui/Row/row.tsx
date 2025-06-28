@@ -20,18 +20,16 @@ export const Row: React.FC<RowProps> = ({ title, items, focusedIndex }) => {
   }, [focusedIndex]);
 
   return (
-    <>
-      <div className="row">
-        <div className="row__header">{title}</div>
-        <div className="tile-container">
-          {items.map((contentId, i) => (
-            <div className="tile-wrapper" ref={(el) => (tileRefs.current[i] = el) as any}>
-              <Tile key={contentId} contentId={contentId} isFocused={i === focusedIndex} />
-              {/* <FocusableTile key={contentId} contentId={contentId} id={i} isFocused={i === focusedIndex} /> */}
-            </div>
-          ))}
-        </div>
+    <div className="row">
+      <div className="row__header">{title}</div>
+      <div className="tile-container">
+        {items.map((contentId, i) => (
+          <div key={i} className="tile-wrapper" ref={(el) => (tileRefs.current[i] = el) as any}>
+            <Tile contentId={contentId} isFocused={i === focusedIndex} />
+            {/* <FocusableTile key={contentId} contentId={contentId} id={i} isFocused={i === focusedIndex} /> */}
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };

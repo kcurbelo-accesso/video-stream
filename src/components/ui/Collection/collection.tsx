@@ -14,7 +14,6 @@ type CollectionProps = {
 export const Collection: React.FC<CollectionProps> = ({ id, focusedIndex }) => {
   const state = useMovieCollectionData();
   const shelf = selectShelfbyId(state, id);
-  const shelfId = shelf.id + '' + crypto.randomUUID();
 
   /**
    * The goal here was to use react's context api service to handle the keyboard navigation
@@ -35,14 +34,14 @@ export const Collection: React.FC<CollectionProps> = ({ id, focusedIndex }) => {
 
   if (isValidArray(shelf.contentIds)) {
     return (
-      <div key={shelfId} className="collection">
+      <div className="collection">
         {/* <h2 className="row__header">{shelf.title}</h2> */}
         <Row focusedIndex={focusedIndex} title={shelf.title} items={shelf.contentIds} />
       </div>
     );
   } else {
     return (
-      <div key={shelfId} className="collection">
+      <div className="collection">
         <LazyRow focusedIndex={focusedIndex} title={shelf.title} refId={shelf.refId ?? shelf.id} />
       </div>
     );

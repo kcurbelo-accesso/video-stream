@@ -61,7 +61,7 @@ export const LazyRow: React.FC<LazyRowProps> = ({ refId, title, focusedIndex }) 
             } catch (err) {
               console.error(`Failed to load shelf ${refId}:`, err);
             }
-          }, 2000);
+          }, 1000);
         }
       },
       { threshold: 0.3 }
